@@ -64,7 +64,7 @@ function animation(elem) {
   tl.add({
     targets: wrapElem(".scissors2"),
     opacity: 1,
-    top: [y + 50, y - 50],
+    top: [y + 60, y - 10],
     easing: "linear",
     begin: function() {
       scissors.style.left = x - 10 + "px"
@@ -82,7 +82,7 @@ function animation(elem) {
       video.pause();
       setTimeout(() => {
         scissors.style.opacity = 0;
-      }, 500)
+      }, 1000)
     }
   })
   
