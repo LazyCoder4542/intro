@@ -3,6 +3,8 @@ window.addEventListener("DOMContentLoaded", function () {
   var box = document.querySelector(".con")
   animation(box)
 })
+const longtext = "www.welcometomysite.com"
+const link = "bit.ly"
 const wrapElem = (s) => ".con " + s 
 const appendStaggerText = (elem, text) => {
   text.split("").map(c => c === " " ? '&nbsp;' : c).forEach(e => {
@@ -23,10 +25,10 @@ function animation(elem) {
     easing: 'easeOutInCirc',
     delay: (el, i) => 500 + i * 200 // increase delay by 100ms for each elements.
   });
-  var tl = anime.timeline();
-  appendStaggerText(elem.querySelector(wrapElem(".text .left .long")), "www.welcometomysite.com")
-  appendStaggerText(elem.querySelector(".text .link"), "bit.ly")
+  appendStaggerText(elem.querySelector(wrapElem(".text .left .long")), window.innerWidth >= 768 ? longtext : "welcome.com")
+  appendStaggerText(elem.querySelector(".text .link"), link)
   appendStaggerText(elem.querySelector(wrapElem(".text .right")), "/new-user")
+  var tl = anime.timeline();
   tl.add({
     targets: wrapElem(".text .letter"),
     translateY: [-10, 0],
@@ -102,14 +104,20 @@ function animation(elem) {
     width: [0, fn()],
     easing: "linear",
   })
-  
-  tl.add({
-    targets: wrapElem(""),
-    opacity: 0,
-    complete: () => {
-      dots.pause();
-    }
-  }, "+=1000")
+  // tl.add({
+  //   targets: wrapElem(".text"),
+  //   opacity: 0,
+  //   scale: 10,
+  //   easing: "linear"
+  // }, "+=1000")
+  // tl.add({
+  //   targets: wrapElem(""),
+  //   opacity: 0,
+  //   complete: () => {
+  //     dots.pause();
+  //   },
+  //   easing: "linear"
+  // }, "-=1000")
 }
 
 function fn() {
